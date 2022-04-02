@@ -3,9 +3,10 @@ const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()
 const path = require("path");
 const PORT = process.env.PORT || 3000;
-const app = express();
-
+const cors = require('cors')
 const { setupSentimentModel, getSentimentScore } = require('./lib/sentiment-analysis')
+const app = express();
+app.use(cors())
 
 app
   .use(express.static(path.join(__dirname, "public")))
